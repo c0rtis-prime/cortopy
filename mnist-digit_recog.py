@@ -48,7 +48,7 @@ while(cam.isOpened()):
                     "Prediction: "+str(prediction), 
                     (10,380), 
                     cv2.FONT_HERSHEY_SIMPLEX, 
-                    0.7, 
+                    1, 
                     (0, 255, 0), 
                     2)
         
