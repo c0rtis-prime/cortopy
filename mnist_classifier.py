@@ -43,7 +43,7 @@ classifier.train(X_train.values, Y_train_enc.values,
                     X_test.values, Y_test_enc.values,
                     learning_rate=0.003,     
                     batch_size=100,  
-                    epochs = 32)
+                    epochs = 1)
 
 
-classifier.save_weights("results/mnist-weights_ctc")
+classifier.save_weights("results/mnist-weights_1")
