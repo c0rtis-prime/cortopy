@@ -3,10 +3,13 @@ Deep Neural Network framework module built from scratch
 ---
 ##Currently available options:
 
-*Classes:* 1. dense_model
+*Classes:*   
+
+                    1. dense_model
 
 
-*Activation functions:* 
+*Activation functions:*
+
                     1. ReLU
                     2. Sigmoid                         
                     3. Hyperbolic tangent                       
@@ -14,19 +17,46 @@ Deep Neural Network framework module built from scratch
                        
 *Losses:*              
 
-                    Mean squared error
-                    Binary cross entropy
-                    Softmax cross entropy (multiclass)
+                    1. Mean squared error
+                    2. Binary cross entropy
+                    3. Softmax cross entropy (multiclass)
                        
 *Optimizers:*      
 
-                    Mini-batch Gradient Descent
+                    1. Mini-batch Gradient Descent
                     
-                    
+  
+  
 ##Usage in code:
 
-*Import "models" and create a dense_model object:*
+#Import "models" and create a dense_model object:
 ```python
 import models
 model = models.dense_model(X_train, Y_train_enc, hidden_units, act_fn_list, cost)
+```
+
+#Train your model:
+```python
+classifier.train(X_train, Y_train_enc,
+                    X_test, Y_test_enc,
+                    learning_rate,     
+                    batch_size,  
+                    epochs)
+```
+The training process returns the Loss v/s Epoch plot
+
+#Make predictions:
+```python
+prediction = model.predict(X_sample)
+```
+
+#Save weights:
+```python
+model.save_weights(path)
+```
+
+#Load weights into the model:
+```python
+model = models.dense_model(X_train-like, Y_train_enc-like, hidden_units, act_fn_list, cost)
+model.load_weights(path)
 ```
