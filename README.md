@@ -75,7 +75,7 @@ This module was used to create a classifier for the MNIST dataset with the follo
 
 and produced the following results:
 
-      ![alt text]("https://github.com/c0rtis/cortopy/blob/master/results/mnist-error plot.png" "Loss plot") 
+      ![alt text](https://github.com/c0rtis/cortopy/blob/master/results/mnist-error_plot.png "Loss plot") 
       Train accuracy = 92.6917%
       Test accuracy = 92.65%
 <<<<<<< HEAD
