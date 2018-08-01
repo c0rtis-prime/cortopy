@@ -78,4 +78,7 @@ and produced the following results:
       ![alt text]("https://github.com/c0rtis/cortopy/blob/master/results/mnist-error plot.png" "Loss plot") 
       Train accuracy = 92.6917%
       Test accuracy = 92.65%
+<<<<<<< HEAD
 
+=======
+>>>>>>> 0e3963c1bb9ea9dc485ef2dd1d48563e128d145a
