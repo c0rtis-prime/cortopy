@@ -5,25 +5,25 @@ Deep Neural Network framework module built from scratch with numpy
 
 ## Currently available options:
 
-*Classes:*   
+**Classes:**   
 
                     1. dense_model
 
 
-*Activation functions:*
+**Activation functions:**
 
                     1. ReLU
                     2. Sigmoid                         
                     3. Hyperbolic tangent                       
                     4. Softmax
                        
-*Losses:*              
+**Losses:**              
 
                     1. Mean squared error
                     2. Binary cross entropy
                     3. Softmax cross entropy (multiclass)
                        
-*Optimizers:*      
+**Optimizers:**      
 
                     1. Mini-batch Gradient Descent
                       
@@ -36,6 +36,9 @@ Deep Neural Network framework module built from scratch with numpy
 import models
 model = models.dense_model(X_train, Y_train_enc, hidden_units, act_fn_list, cost)
 ```
+Options:  
+*act_fn_list* - 'relu', 'sigmoid', 'tanh', 'softmax'  
+*cost* - 'mse', 'binary_cross_entropy', 'softmax_cross_entropy_w_logits'
 
 #### Train your model:
 ```python
