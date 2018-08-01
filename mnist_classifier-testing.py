@@ -39,11 +39,28 @@ Y_test_enc = pd.DataFrame(Y_test_enc).T
 hidden_units = [512,512]
 classifier = models.dense_model(X_train.values, Y_train_enc.values, hidden_units, act_fn_list=['relu','relu','softmax'], cost="softmax_cross_entropy_w_logits")
 
-classifier.train(X_train.values, Y_train_enc.values,
-                    X_test.values, Y_test_enc.values,
-                    learning_rate=0.003,     
-                    batch_size=100,  
-                    epochs = 32)
+
+################################### TESTING ON IMAGES #########################
+classifier.load_weights("results/mnist-weights_ctc")
+
+ix = np.random.randint(0,10000)
+X_sample = X_test.iloc[:, ix:ix+1]
+Y_sample = Y_test_enc.iloc[:, ix:ix+1]
+X_sample_img = X_sample.iloc[:,0].reshape(28,28)
+#plt.imshow(X_sample_img)
+plt.imsave("test_sample.png", X_sample_img)
 
 
-classifier.save_weights("results/mnist-weights_ctc")
+X = plt.imread("test_sample.png")
+plt.imshow(X)
+plt.show()
+X = X.mean(axis = 2).reshape(784,1)
+X[:,0] -= 0.4
+
+print(np.argmax(classifier.predict(X)))
+
+################################### ACCURACY CALCULATION ######################
+y_test_pred = classifier.predict(X_test)
+
+accuracy =  np.mean( np.equal(np.argmax(y_test_pred,axis=0), np.argmax(Y_test_enc.values,axis=0)).astype(int)  ) * 100
+print(accuracy)
