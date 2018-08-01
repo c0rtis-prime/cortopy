@@ -60,7 +60,10 @@ X[:,0] -= 0.4
 print(np.argmax(classifier.predict(X)))
 
 ################################### ACCURACY CALCULATION ######################
-y_test_pred = classifier.predict(X_test)
+y_train_pred = classifier.predict(X_train)
+train_accuracy =  np.mean( np.equal(np.argmax(y_train_pred,axis=0), np.argmax(Y_train_enc.values,axis=0)).astype(int)  ) * 100
+print("Train accuracy: ", train_accuracy)
 
-accuracy =  np.mean( np.equal(np.argmax(y_test_pred,axis=0), np.argmax(Y_test_enc.values,axis=0)).astype(int)  ) * 100
-print(accuracy)
+y_test_pred = classifier.predict(X_test)
+test_accuracy =  np.mean( np.equal(np.argmax(y_test_pred,axis=0), np.argmax(Y_test_enc.values,axis=0)).astype(int)  ) * 100
+print("Test accuracy: ", test_accuracy)
