@@ -3,17 +3,14 @@ Deep Neural Network framework module built from scratch
 ---
 ##Currently available options:
 
-*Classes:* 
-
-                    dense_model
+*Classes:* +dense_model
 
 
 *Activation functions:* 
-
-                    ReLU
-                    Sigmoid                         
-                    Hyperbolic tangent                       
-                    Softmax
+                    +ReLU
+                    +Sigmoid                         
+                    +Hyperbolic tangent                       
+                    +Softmax
                        
 *Losses:*              
 
@@ -30,5 +27,6 @@ Deep Neural Network framework module built from scratch
 
 *Import "models" and create a dense_model object:*
 ```python
+import models
 model = models.dense_model(X_train, Y_train_enc, hidden_units, act_fn_list, cost)
 ```
