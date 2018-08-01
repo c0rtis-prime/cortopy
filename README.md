@@ -3,14 +3,14 @@ Deep Neural Network framework module built from scratch
 ---
 ##Currently available options:
 
-*Classes:* +dense_model
+*Classes:* 1. dense_model
 
 
 *Activation functions:* 
-                    +ReLU
-                    +Sigmoid                         
-                    +Hyperbolic tangent                       
-                    +Softmax
+                    1. ReLU
+                    2. Sigmoid                         
+                    3. Hyperbolic tangent                       
+                    4. Softmax
                        
 *Losses:*              
 
