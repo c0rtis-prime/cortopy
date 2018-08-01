@@ -1,6 +1,6 @@
 # cortopy
 Deep Neural Network framework module built from scratch
-
+---
 **Currently available options:**
 *Classes:* dense_model
 
