@@ -1,6 +1,6 @@
 import numpy as np
 import cv2
-import models
+import cortopy.models as models
 
 
 X_train = np.zeros([784,60000])

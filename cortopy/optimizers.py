@@ -1,7 +1,7 @@
 __author__ = "Chinmay Rao"
 
 import numpy as np
-from model_utils import *
+from cortopy.model_utils import *
 
 def minibatch_GD(X_train_batch, parameters, cache, L, learning_rate, batch_size, dA, dZ=None):
     #print("back-prop")

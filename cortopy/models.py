@@ -4,8 +4,8 @@ import numpy as np
 import pickle
 import math
 import matplotlib.pyplot as plt
-from model_utils import *
-import optimizers
+from cortopy.model_utils import *
+from cortopy import optimizers
 
 
 class dense_model():
