@@ -24,7 +24,8 @@ def predict(img_array):
 cam = cv2.VideoCapture(0)
 
 while(cam.isOpened()):
-    x, y, w, h = 0, 0, 300, 300
+    #x, y, w, h = 0, 0, 300, 300
+    x, y, w, h = 424-150, 240-150, 300, 300
     
     ret, img = cam.read()
     
@@ -45,8 +46,8 @@ while(cam.isOpened()):
         prediction = predict(input_img)
         
         cv2.putText(img, 
-                    "Prediction: "+str(prediction), 
-                    (10,380), 
+                    "Prediction: "+ str(prediction), 
+                    (x,450), 
                     cv2.FONT_HERSHEY_SIMPLEX, 
                     1, 
                     (0, 255, 0), 
