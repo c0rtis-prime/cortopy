@@ -46,9 +46,15 @@ classifier.train(X_train, Y_train_enc,
                  X_test, Y_test_enc,
                  learning_rate,     
                  batch_size,  
-                 epochs)
+                 epochs
+                 optimizer)
 ```
 The training process returns the Loss v/s Epoch plot
+
+
+Options:
+*optimizers* - 'minibatch_GD', 'momentum_GD'
+
 
 #### Make predictions:
 ```python
@@ -68,19 +74,37 @@ model.load_weights(path)
 ---
 
 ## MNIST handwritten digits dataset
-This module was used to create a classifier for the MNIST dataset with the following settings:
+This module was used to create a classifier for the MNIST dataset with the following sets of configurations:
 
+#### Configuration-1:
       No. of hidden  layers: 2
       No. of hidden units: [512,512]
       Activation functions: ['relu','relu','softmax']
       Learning rate: 0.003
       Batch size: 100
       No. of epochs: 32
+      Optimizer: Mini-batch Gradient Descent
 
-and produced the following results:
+Result:
 
-![alt text](https://github.com/c0rtis/cortopy/blob/master/results/mnist-error_plot.png "Loss plot") 
+![alt text](https://github.com/c0rtis-prime/cortopy/blob/master/results/mnist-Loss_plot_1.png "Loss plot") 
       
-      Train accuracy = 92.6917%
+      Train accuracy = 92.691667%
+      Test accuracy = 92.65%
+
+#### Configuration-2:
+      No. of hidden  layers: 2
+      No. of hidden units: [512,512]
+      Activation functions: ['relu','relu','softmax']
+      Learning rate: 0.003
+      Batch size: 100
+      No. of epochs: 32
+      Optimizer: Gradient Descent with momentum
+
+Result:
+
+![alt text](https://github.com/c0rtis-prime/cortopy/blob/master/results/mnist-Loss_plot_2.png "Loss plot") 
+      
+      Train accuracy = 92.691667%
       Test accuracy = 92.65%
 
