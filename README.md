@@ -96,7 +96,7 @@ Result:
       No. of hidden  layers: 2
       No. of hidden units: [512,512]
       Activation functions: ['relu','relu','softmax']
-      Learning rate: 0.003
+      Learning rate: 0.03
       Batch size: 100
       No. of epochs: 32
       Optimizer: Gradient Descent with momentum
