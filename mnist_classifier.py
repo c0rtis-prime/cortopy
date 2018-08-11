@@ -36,14 +36,19 @@ Y_train_enc = pd.DataFrame(Y_train_enc).T
 Y_test_enc = pd.DataFrame(Y_test_enc).T
 
 hidden_units = [512,512]
-classifier = models.dense_model(X_train.values, Y_train_enc.values, hidden_units, act_fn_list=['relu','relu','softmax'], cost="softmax_cross_entropy_w_logits")
+
+classifier = models.dense_model( X_train.values, Y_train_enc.values,
+                                 hidden_units,
+                                 act_fn_list=['relu','relu','softmax'], 
+                                 cost="softmax_cross_entropy_w_logits" )
 
 classifier.train( X_train.values, Y_train_enc.values,
                   X_test.values, Y_test_enc.values,
-                  learning_rate=0.003,     
+                  learning_rate=0.03,     
                   batch_size=100,  
-                  epochs = 1,
-                  optimizer = "minibatch_GD")
+                  epochs = 32,
+                  optimizer = "momentum_GD",
+                  momentum_beta = 0.9 )
 
 
 classifier.save_weights("results/mnist-weights_1")
