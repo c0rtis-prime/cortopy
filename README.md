@@ -26,6 +26,7 @@ Deep Neural Network framework module built from scratch with numpy
 **Optimizers:**      
 
                     1. Mini-batch Gradient Descent
+                    2. Gradient Descent with momentum
                       
 ---  
 
