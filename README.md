@@ -90,7 +90,7 @@ Result:
 ![alt text](https://github.com/c0rtis-prime/cortopy/blob/master/results/mnist-Loss_plot_1.png "Loss plot") 
       
       Train accuracy = 92.691667%
-      Test accuracy = 92.65%
+      Test accuracy = 92.65% 
 
 #### Configuration-2:
       No. of hidden  layers: 2
@@ -105,6 +105,6 @@ Result:
 
 ![alt text](https://github.com/c0rtis-prime/cortopy/blob/master/results/mnist-Loss_plot_2.png "Loss plot") 
       
-      Train accuracy = 92.691667%
-      Test accuracy = 92.65%
+      Train accuracy = 95.71%
+      Test accuracy = 95.23%
 
