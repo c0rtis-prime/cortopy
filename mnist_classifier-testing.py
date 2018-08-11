@@ -41,7 +41,7 @@ classifier = models.dense_model(X_train.values, Y_train_enc.values, hidden_units
 
 
 ################################### TESTING ON IMAGES #########################
-classifier.load_weights("results/mnist-weights")
+classifier.load_weights("results/mnist-weights_2")
 
 ix = np.random.randint(0,10000)
 X_sample = X_test.iloc[:, ix:ix+1]
@@ -57,7 +57,7 @@ plt.show()
 X = X.mean(axis = 2).reshape(784,1)
 X[:,0] -= 0.4
 
-print(np.argmax(classifier.predict(X)))
+print("Prediction: ", np.argmax(classifier.predict(X)))
 
 ################################### ACCURACY CALCULATION ######################
 y_train_pred = classifier.predict(X_train)

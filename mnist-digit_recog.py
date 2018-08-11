@@ -12,14 +12,16 @@ classifier = models.dense_model(X_train, Y_train_enc,
                                 act_fn_list=['relu','relu','softmax'], 
                                 cost="softmax_cross_entropy_w_logits")
 
-classifier.load_weights("results/mnist-weights")
+classifier.load_weights("results/mnist-weights_2")
 
 X_train = None
 Y_train_enc = None
 
 def predict(img_array):
-    return np.argmax(classifier.predict(img_array))
-
+    if np.max(classifier.predict(img_array)) > 0.9999:
+        return np.argmax(classifier.predict(img_array))
+    else:
+        return ''
 
 cam = cv2.VideoCapture(0)
 
@@ -38,7 +40,7 @@ while(cam.isOpened()):
         scratch_area = img[y:y+h, x:x+h]
         scratch_area = cv2.cvtColor(scratch_area, cv2.COLOR_BGR2GRAY)
         
-        _, scratch_area = cv2.threshold(scratch_area,15,255, cv2.THRESH_BINARY_INV)
+        _, scratch_area = cv2.threshold(scratch_area,25,255, cv2.THRESH_BINARY_INV)
         
         input_img = cv2.resize(scratch_area, (28,28))
         input_img = np.array(input_img).reshape(784,1)

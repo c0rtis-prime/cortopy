@@ -5,8 +5,9 @@ import pickle
 import math
 import matplotlib.pyplot as plt
 from cortopy.model_utils import *
+#from model_utils import *
 from cortopy import optimizers
-
+#import optimizers
 
 class dense_model():
     def __init__(self, X, Y, hidden_units, act_fn_list, cost):
@@ -15,16 +16,18 @@ class dense_model():
         self.act_fn_list = act_fn_list
         self.act_fn_list.insert(0,None)
         self.parameters = init_params(X.shape[0], Y.shape[0], hidden_units)    #PARAMETERS = {W1:[], b1:[], ....}
-        self.cache = [None]                                                    #cache = [None, (Z1,A1,'relu'),(Z2,A2,'relu'),...]
+        self.cache = [None]                                                    #cache = [None, (Z1,A1,'relu'),(Z2,A2,'relu'), .....]
+        #self.gradients = [None]                                               
         
-    def train(self, X_train, Y_train, X_test, Y_test, learning_rate, batch_size, epochs):
+    def train(self, X_train, Y_train, X_test, Y_test, learning_rate, batch_size, epochs, optimizer, momentum_beta = 0.9):
         #print("self.hidden_units",self.hidden_units)##
-        #print("Training")     
+        #print("Training")
         training_error_list = []
         test_error_list = []
         L = len(self.hidden_units) #+ 1               
         n_batches = math.floor(Y_train.shape[1] / batch_size)
-        #print("no. of batches : ",n_batches)##                 
+        #print("no. of batches : ",n_batches)## 
+        Velocities = [None]  #for momentum_GD                                  #Velocities = [None, (V_dW1,V_db1), (V_dW1,V_db1), .....]              
         for epoch in range(0,epochs):           
             for t in range(1,n_batches+1):
                 print("TRAINING - Epoch: {}, Batch: {}".format(epoch,t))#######
@@ -53,7 +56,11 @@ class dense_model():
                 #print("Cost: {}, batch: {}, epoch: {}".format(J,t,epoch))
                       
                 # back propagation
-                self.parameters, self.cache = optimizers.minibatch_GD(X_train_batch, self.parameters, self.cache, L, learning_rate, batch_size, dA, dZ)
+                if optimizer is "minibatch_GD":
+                    self.parameters, self.cache = optimizers.minibatch_GD(X_train_batch, self.parameters, self.cache, L, learning_rate, batch_size, dA, dZ)
+                elif optimizer is "momentum_GD":
+                    self.parameters, self.cache, Velocities = optimizers.momentum_GD(Velocities, t, momentum_beta, 
+                                                                                     X_train_batch, self.parameters, self.cache, L, learning_rate, batch_size, dA, dZ)
                 ###############################################################
             training_error_list.append(J)
             test_error = test(X_test,Y_test, self.parameters, self.act_fn_list, self.cost)
@@ -65,8 +72,8 @@ class dense_model():
         plt.xlabel("epochs")
         plt.ylabel("loss")
         plt.legend(["Training error","Test error"], loc="upper right")
-        plt.title("Learning rate: "+ str(learning_rate))
-        plt.savefig("Error plot")
+        plt.title("Learning rate:"+ str(learning_rate)+", Optimizer:"+ str(optimizer))
+        plt.savefig("results/Loss_plot")
         plt.show()
         
     def predict(self, X_sample): 
