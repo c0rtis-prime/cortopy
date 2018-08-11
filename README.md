@@ -86,8 +86,7 @@ This module was used to create a classifier for the MNIST dataset with the follo
       No. of epochs: 32
       Optimizer: Mini-batch Gradient Descent
 
-Result:
-
+Result: 
 ![alt text](https://github.com/c0rtis-prime/cortopy/blob/master/results/mnist-Loss_plot_1.png "Loss plot") 
       
       Train accuracy = 92.691667%
@@ -102,8 +101,7 @@ Result:
       No. of epochs: 32
       Optimizer: Gradient Descent with momentum
 
-Result:
-
+Result: 
 ![alt text](https://github.com/c0rtis-prime/cortopy/blob/master/results/mnist-Loss_plot_2.png "Loss plot") 
       
       Train accuracy = 95.71%
