@@ -35,6 +35,7 @@ Y_test = None
 Y_train_enc = pd.DataFrame(Y_train_enc).T
 Y_test_enc = pd.DataFrame(Y_test_enc).T
 
+
 hidden_units = [512,512]
 
 classifier = models.dense_model( X_train.values, Y_train_enc.values,
@@ -44,11 +45,11 @@ classifier = models.dense_model( X_train.values, Y_train_enc.values,
 
 classifier.train( X_train.values, Y_train_enc.values,
                   X_test.values, Y_test_enc.values,
-                  learning_rate=0.03,     
+                  learning_rate=0.0001,     
                   batch_size=100,  
-                  epochs = 32,
-                  optimizer = "momentum_GD",
-                  momentum_beta = 0.9 )
+                  epochs = 52,
+                  optimizer = "RMS_prop",
+                  rmsprop_beta = 0.999 )
 
 
-classifier.save_weights("results/mnist-weights_1")
+classifier.save_weights("results/mnist-weights")

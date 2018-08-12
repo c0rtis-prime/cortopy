@@ -41,7 +41,7 @@ classifier = models.dense_model(X_train.values, Y_train_enc.values, hidden_units
 
 
 ################################### TESTING ON IMAGES #########################
-classifier.load_weights("results/mnist-weights")
+classifier.load_weights("results/mnist-4/mnist-weights_[optmzr=ADAM]_[lr=0.0001]")
 
 ix = np.random.randint(0,10000)
 X_sample = X_test.iloc[:, ix:ix+1]
