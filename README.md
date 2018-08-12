@@ -81,10 +81,12 @@ model.load_weights(path)
 ## MNIST handwritten digits dataset
 This module was used to create a classifier for the MNIST dataset with the following sets of configurations:
 
-#### Configuration-1:
+#### Architecture:
       No. of hidden  layers: 2
       No. of hidden units: [512,512]
       Activation functions: ['relu','relu','softmax']
+      
+##### Configuration-1:      
       Learning rate: 0.003
       Batch size: 100
       No. of epochs: 32
@@ -97,14 +99,12 @@ Result:
       Train accuracy = 92.691667%
       Test accuracy = 92.65% 
 
-#### Configuration-2:
-      No. of hidden  layers: 2
-      No. of hidden units: [512,512]
-      Activation functions: ['relu','relu','softmax']
-      Learning rate: 0.03
+##### Configuration-2:     
       Batch size: 100
       No. of epochs: 32
       Optimizer: Gradient Descent with momentum
+      Learning rate: 0.03
+      momentum_beta = 0.9
 
 Result: 
 
@@ -113,14 +113,12 @@ Result:
       Train accuracy = 95.71%
       Test accuracy = 95.23%
 
-#### Configuration-3:
-      No. of hidden  layers: 2
-      No. of hidden units: [512,512]
-      Activation functions: ['relu','relu','softmax']
-      Learning rate: 0.0003
+##### Configuration-3:      
       Batch size: 100
       No. of epochs: 25
       Optimizer: RMS prop
+      Learning rate: 0.0003
+      Decay = 0.99
 
 Result: 
 
@@ -129,14 +127,13 @@ Result:
       Train accuracy = 99.921667%
       Test accuracy = 97.88%
       
- #### Configuration-4:
-      No. of hidden  layers: 2
-      No. of hidden units: [512,512]
-      Activation functions: ['relu','relu','softmax']
-      Learning rate: 0.0003
+ #### Configuration-4:    
       Batch size: 100
       No. of epochs: 52
       Optimizer: ADAM
+      Learning rate: 0.0003
+      RMS decay = 0.999
+      momentum_beta = 0.9
 
 Result: 
 
