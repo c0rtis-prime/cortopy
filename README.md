@@ -52,7 +52,7 @@ classifier.train( X_train, Y_train_enc,
                   epochs,
                   optimizer,
                   momentum_beta=0.9,
-                  rmsprop_beta=0.99 )
+                  rmsprop_beta=0.999 )
 ```
 The training process returns the Loss v/s Epoch plot
 
