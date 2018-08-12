@@ -8,7 +8,6 @@ classifier = models.dense_model( X_train.values, Y_train_enc.values,
                                  act_fn_list=['relu','relu','softmax'], 
                                  cost="softmax_cross_entropy_w_logits" )
 
-
 '''
 learning_rates = [1e-4, 9e-5, 7e-5,]
 
@@ -28,9 +27,7 @@ for lr in learning_rates:
                       optimizer = "ADAM",
                       momentum_beta = 0.9,
                       rmsprop_beta = 0.999 )
-
 '''
-
 classifier.train( X_train.values, Y_train_enc.values,
                   X_test.values, Y_test_enc.values,
                   learning_rate=0.0001,     
