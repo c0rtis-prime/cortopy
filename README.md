@@ -27,6 +27,8 @@ Deep Neural Network framework module built from scratch with numpy
 
                     1. Mini-batch Gradient Descent
                     2. Gradient Descent with momentum
+                    3. RMS prop
+                    4. ADAM
                       
 ---  
 
@@ -43,18 +45,20 @@ Options:
 
 #### Train your model:
 ```python
-classifier.train(X_train, Y_train_enc,
-                 X_test, Y_test_enc,
-                 learning_rate,     
-                 batch_size,  
-                 epochs
-                 optimizer)
+classifier.train( X_train, Y_train_enc,
+                  X_test, Y_test_enc,
+                  learning_rate,     
+                  batch_size,  
+                  epochs,
+                  optimizer,
+                  momentum_beta=0.9,
+                  rmsprop_beta=0.99 )
 ```
 The training process returns the Loss v/s Epoch plot
 
 
 Options:
-*optimizers* - 'minibatch_GD', 'momentum_GD'
+*optimizers* - 'minibatch_GD', 'momentum_GD', 'RMS_prop', 'ADAM'
 
 
 #### Make predictions:
@@ -88,7 +92,7 @@ This module was used to create a classifier for the MNIST dataset with the follo
 
 Result: 
 
-![alt text](https://github.com/c0rtis-prime/cortopy/blob/master/results/mnist-Loss_plot_1.png "Loss plot") 
+![alt text](https://github.com/c0rtis-prime/cortopy/blob/master/results/mnist-1/mnist-Loss_plot_%5Boptmzr%3DminibatchGD%5D_%5Blr%3D0.003%5D.png.png "Loss plot") 
       
       Train accuracy = 92.691667%
       Test accuracy = 92.65% 
@@ -104,8 +108,39 @@ Result:
 
 Result: 
 
-![alt text](https://github.com/c0rtis-prime/cortopy/blob/master/results/mnist-Loss_plot_2.png "Loss plot") 
+![alt text](https://github.com/c0rtis-prime/cortopy/blob/master/results/mnist-2/mnist-Loss_plot_%5Boptmzr%3DmomentumGD%5D_%5Blr%3D0.03%5D.png "Loss plot") 
       
       Train accuracy = 95.71%
       Test accuracy = 95.23%
 
+#### Configuration-3:
+      No. of hidden  layers: 2
+      No. of hidden units: [512,512]
+      Activation functions: ['relu','relu','softmax']
+      Learning rate: 0.0003
+      Batch size: 100
+      No. of epochs: 25
+      Optimizer: RMS prop
+
+Result: 
+
+![alt text](https://github.com/c0rtis-prime/cortopy/blob/master/results/mnist-3/Loss_plot_%5Boptmzr%3DRMS_prop%5D_%5Blr%3D0.0003%5D.png "Loss plot") 
+      
+      Train accuracy = 99.921667%
+      Test accuracy = 97.88%
+      
+ #### Configuration-4:
+      No. of hidden  layers: 2
+      No. of hidden units: [512,512]
+      Activation functions: ['relu','relu','softmax']
+      Learning rate: 0.0003
+      Batch size: 100
+      No. of epochs: 52
+      Optimizer: ADAM
+
+Result: 
+
+![alt text](https://github.com/c0rtis-prime/cortopy/blob/master/results/mnist-4/Loss_plot_%5Boptmzr%3DADAM%5D_%5Blr%3D0.0001%5D.png "Loss plot") 
+      
+      Train accuracy = 99.941667%
+      Test accuracy = 97.9%
