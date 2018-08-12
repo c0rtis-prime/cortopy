@@ -95,7 +95,7 @@ def cost_calc(y_pred, y_true, cost):
 
 ########################################### TEST ERROR CALCULATION ############
     
-def test(X_test, Y_test, parameters, act_fn_list, cost):
+def Test(X_test, Y_test, parameters, act_fn_list, cost):
     L = len(act_fn_list) - 1
     local_cache = [None]
     # forward propagation

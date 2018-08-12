@@ -12,7 +12,7 @@ classifier = models.dense_model(X_train, Y_train_enc,
                                 act_fn_list=['relu','relu','softmax'], 
                                 cost="softmax_cross_entropy_w_logits")
 
-classifier.load_weights("results/mnist-weights_2")
+classifier.load_weights("results/mnist-3/mnist-weights_3")
 
 X_train = None
 Y_train_enc = None

@@ -19,7 +19,7 @@ class dense_model():
         self.cache = [None]                                                    #cache = [None, (Z1,A1,'relu'),(Z2,A2,'relu'), .....]
         #self.gradients = [None]                                               
         
-    def train(self, X_train, Y_train, X_test, Y_test, learning_rate, batch_size, epochs, optimizer, momentum_beta = 0.9):
+    def train(self, X_train, Y_train, X_test, Y_test, learning_rate, batch_size, epochs, optimizer, momentum_beta = 0.9, rmsprop_beta = 0.999):
         #print("self.hidden_units",self.hidden_units)##
         #print("Training")
         training_error_list = []
@@ -28,6 +28,7 @@ class dense_model():
         n_batches = math.floor(Y_train.shape[1] / batch_size)
         #print("no. of batches : ",n_batches)## 
         Velocities = [None]  #for momentum_GD                                  #Velocities = [None, (V_dW1,V_db1), (V_dW1,V_db1), .....]              
+        rmsprop_S = [None]  #for RMS_prop                                     #rmsprop_S = [None, (S_dW1,S_db1), (S_dW2,S_db2), .....]
         for epoch in range(0,epochs):           
             for t in range(1,n_batches+1):
                 print("TRAINING - Epoch: {}, Batch: {}".format(epoch,t))#######
@@ -61,9 +62,15 @@ class dense_model():
                 elif optimizer is "momentum_GD":
                     self.parameters, self.cache, Velocities = optimizers.momentum_GD(Velocities, t, momentum_beta, 
                                                                                      X_train_batch, self.parameters, self.cache, L, learning_rate, batch_size, dA, dZ)
+                elif optimizer is "RMS_prop":
+                    self.parameters, self.cache, rmsprop_S = optimizers.RMS_prop(rmsprop_S, rmsprop_beta, t,
+                                                                        X_train_batch, self.parameters, self.cache, L, learning_rate, batch_size, dA, dZ)
+                elif optimizer is "ADAM":
+                    self.parameters, self.cache, Velocities, rmsprop_S = optimizers.ADAM(Velocities, rmsprop_S, momentum_beta, rmsprop_beta, t,
+                                                                                          X_train_batch, self.parameters, self.cache, L, learning_rate, batch_size, dA, dZ)
                 ###############################################################
             training_error_list.append(J)
-            test_error = test(X_test,Y_test, self.parameters, self.act_fn_list, self.cost)
+            test_error = Test(X_test,Y_test, self.parameters, self.act_fn_list, self.cost)
             test_error_list.append(test_error)        
        
         
@@ -73,7 +80,7 @@ class dense_model():
         plt.ylabel("loss")
         plt.legend(["Training error","Test error"], loc="upper right")
         plt.title("Learning rate:"+ str(learning_rate)+", Optimizer:"+ str(optimizer))
-        plt.savefig("results/Loss_plot")
+        plt.savefig("results/Loss_plot_[optmzr={}]_[lr={}].png".format(optimizer,learning_rate))
         plt.show()
         
     def predict(self, X_sample): 
